@@ -1,8 +1,41 @@
-import dotenv from 'dotenv';
+import Joi from 'joi';
 
-dotenv.config();
+interface IConfig {
+  api: { port: number; host: string };
+  db: { uri: string };
+}
 
-export const config = {
-  port: process.env.PORT || 3000,  // Fallback to port 3000 if not specified in .env
-  mongoUri: process.env.MONGO_URI || 'mongodb://localhost:27017/myapp',  // Default URI if not specified in .env
+const configSchema = Joi.object({
+  API_PORT: Joi.number().integer().min(1).max(65535).required(),
+  API_HOST: Joi.string().hostname().required(),
+  DB_URI: Joi.string().uri().required(),
+});
+
+let cachedConfig: IConfig | null = null;
+
+const validateConfig = (): IConfig => {
+  const { error, value } = configSchema.validate(process.env, {
+    allowUnknown: true,
+  });
+
+  if (error) {
+    throw new Error(`Config validation error: ${error.message}`);
+  }
+
+  return {
+    api: { port: +value.API_PORT, host: value.API_HOST },
+    db: { uri: value.DB_URI },
+  };
 };
+
+const getConfigs = (): IConfig => {
+  // If the configuration has already been validated and cached, return it
+  if (cachedConfig) {
+    return cachedConfig;
+  }
+
+  cachedConfig = validateConfig();
+  return cachedConfig;
+};
+
+export const config = getConfigs();

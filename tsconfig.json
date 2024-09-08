@@ -5,9 +5,9 @@
     "rootDir": "./src",                     
     "outDir": "./dist",                     
     "esModuleInterop": true,                
-    "strict": true,                         
+    "strict": false,                         
     "skipLibCheck": true                    
   },
-  "include": ["src/**/*.ts"],  // Adjust this path to match your structure
+  "include": ["src/**/*.ts", "src/middlewares/authenticationMiddleware.js"],  // Adjust this path to match your structure
   "exclude": ["node_modules"]
 }
