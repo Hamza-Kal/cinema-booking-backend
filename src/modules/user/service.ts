@@ -40,7 +40,6 @@ class UserService {
     return await user.save();
   }
 
-  // Login functionality
   async login({
     dto,
   }: {
@@ -48,11 +47,16 @@ class UserService {
     session?: mongoose.mongo.ClientSession;
   }) {
     const user = await this.findByName(dto.name);
-
+    
+    if (!user) {
+      throw this.userError.invalidCredentials(); 
+    }
+  
     const isPasswordValid = await bcrypt.compare(dto.password, user.password);
     if (!isPasswordValid) {
       throw this.userError.invalidCredentials();
     }
+  
     const token = jwt.sign(
       {
         id: user._id,
@@ -61,14 +65,15 @@ class UserService {
       },
       process.env.JWT_SECRET as string,
       {
-        expiresIn: "1h",
+        expiresIn: "24h",
       }
     );
     return {
       message: "Login successful",
-      token,
+      token: token,
     };
   }
+  
 
   // Get all users functionality
   async getAll() {
