@@ -23,9 +23,14 @@ export const errorCodes = {
   screening: {
     notFound: 6000,
     alreadyExist: 6001,
-    invalidTime: 6002,             // Added error code for invalid screening time
-    overlappingScreening: 6003,    // Added error code for overlapping screenings
+    invalidTime: 6002,         
+    overlappingScreening: 6003,
+    seatUnAvailable: 6004,
   },
+  ticket:{
+    alreadyExist: 7001,
+    notFound: 7002,
+  }
 };
 
 export const errorHandler = (

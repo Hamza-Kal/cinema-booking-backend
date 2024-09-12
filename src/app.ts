@@ -5,7 +5,8 @@ import { errorHandler } from "./utils/error";
 import seatRouter from "./modules/seat/route";
 import cinemaHallRouter from "./modules/cinema hall/route";
 import userRouter from "./modules/user/route";
-import screeningRouter from "./modules/screening/route" 
+import screeningRouter from "./modules/screening/route";
+import ticketRouter from "./modules/ticket/route";
 const app: Application = express();
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use("/api/movie", movieRouter);
 app.use("/api/cinemaHalls", cinemaHallRouter);
 app.use("/api/seat", seatRouter);
 app.use("/api/screening", screeningRouter);
+app.use("/api/ticket",ticketRouter);
 app.get("/", (req: Request, res: Response) => {
   res.send("API is running...");
 });
