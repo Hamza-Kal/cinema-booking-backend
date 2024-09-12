@@ -1,6 +1,6 @@
 # Ticket Booking System
 
-This project is a **Node.js** and **Express**-based ticket booking system that allows users to book seats for various screenings. It utilizes **MongoDB** as the database and supports features like ticket creation, seat reservation, and viewing tickets based on user ID.
+This project is a **Node.js** and **Express**-based ticket booking system that allows users to book seats for various screenings. It utilizes **MongoDB** as the database
 
 ## Technologies Used
 
