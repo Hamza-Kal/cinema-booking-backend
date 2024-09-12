@@ -6,8 +6,6 @@ import { validateReqProperty } from '../../utils/validation';
 import controllers from './controller';
 import validationSchemas from './validation';
 
-
-
 const router =  express.Router();
 
 router.post('',validateReqProperty(validationSchemas.create,RequestPropertyMiddlewareEnum.Body),authMiddleware, asyncHandler(controllers.create))

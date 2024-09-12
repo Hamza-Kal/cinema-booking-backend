@@ -6,7 +6,7 @@ export class SeatErrors {
     constructor(){}
     notFound(overrideMessage?:string):Exception{
         const error = new Exception({
-            errorCode:errorCodes.Seat.notFound,
+            errorCode:errorCodes.seat.notFound,
             message:overrideMessage || 'Not found',
             statusCode:statusCodes.NOT_FOUND
         });
@@ -14,7 +14,7 @@ export class SeatErrors {
     }
     alreadyExists(overrideMessage?:string):Exception{
         const error = new Exception({
-            errorCode:errorCodes.Seat.alreadyExist,
+            errorCode:errorCodes.seat.alreadyExist,
             message:overrideMessage || 'Already exists',
             statusCode:statusCodes.BAD_REQUEST
         });

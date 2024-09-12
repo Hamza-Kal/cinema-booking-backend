@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+
 export const errorCodes = {
   user: {
     notFound: 1000,
@@ -6,19 +7,25 @@ export const errorCodes = {
   },
   login: {
     invalidCredentials: 2000,
-    },
+  },
   movie: {
-    notFound:3000,
-    alreadyExist:3001
+    notFound: 3000,
+    alreadyExist: 3001,
   },
-  cinemaHall:{
-    notFound:4000,
-    alreadyExist:4001
+  cinemaHall: {
+    notFound: 4000,
+    alreadyExist: 4001,
   },
-  Seat:{
-    notFound:5000,
-    alreadyExist:5001
-  }
+  seat: {
+    notFound: 5000,
+    alreadyExist: 5001,
+  },
+  screening: {
+    notFound: 6000,
+    alreadyExist: 6001,
+    invalidTime: 6002,             // Added error code for invalid screening time
+    overlappingScreening: 6003,    // Added error code for overlapping screenings
+  },
 };
 
 export const errorHandler = (

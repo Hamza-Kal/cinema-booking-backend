@@ -19,6 +19,7 @@ const seatSchema: Schema = new Schema<ISeat>({
   is_available: {
     type: Boolean,
     required: true,
+    default: false,
   },
   cinema_hall_id: {
     type: mongoose.Schema.Types.ObjectId,  

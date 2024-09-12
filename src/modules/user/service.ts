@@ -12,7 +12,6 @@ class UserService {
     this.userError = new UserErrors();
   }
 
-  // Function to find a user by name
   private async findByName(name: string, throwError?: boolean) {
     const user = await User.findOne({ name });
     if (!user && throwError) {
