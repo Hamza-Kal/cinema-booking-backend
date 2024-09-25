@@ -14,8 +14,8 @@ const app: Application = express();
 dotenv.config();
 
 app.use(cors({
-  origin: ['http://localhost:3000','https://main--booking-cinmea-damas.netlify.app'], 
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  origin: ['http://localhost:3000', 'http://main--booking-cinmea-damas.netlify.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,  
 }));
 
@@ -24,6 +24,7 @@ app.use(errorHandler);
 
 app.use("/api/user", userRouter);
 app.use("/api/movie", movieRouter);
+
 app.use("/api/cinemaHalls", cinemaHallRouter);
 app.use("/api/seat", seatRouter);
 app.use("/api/screening", screeningRouter);
