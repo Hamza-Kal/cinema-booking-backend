@@ -7,6 +7,7 @@ export interface IMovieEntity {
   duration: number;
   genre: string;
   rating: number;
+  imageUrl: string;
   releaseDate: string;
 }
 
@@ -17,6 +18,7 @@ export class MovieEntity {
   private rating: number;
   private releaseDate: string;
   private genre: string;
+  private imageUrl: string;
   constructor(movie: IMovie) {
     Object.assign(
       this,
@@ -27,6 +29,7 @@ export class MovieEntity {
         "rating",
         "releaseDate",
         "genre",
+        "imageURl",
       ])
     );
   }
@@ -37,6 +40,7 @@ export class MovieEntity {
       duration: this.duration,
       rating: this.rating,
       releaseDate: this.releaseDate,
+      imageUrl:this.imageUrl,
       genre: this.genre,
     };
   }

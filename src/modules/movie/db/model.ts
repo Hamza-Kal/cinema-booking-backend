@@ -6,6 +6,7 @@ export interface IMovie extends Document {
   duration: number;
   rating: number;
   releaseDate: string;
+  imageUrl: string;
   createdAt: Date | string;
   updatedAt: Date | string;
 }
@@ -29,6 +30,10 @@ const movieSchema = new Schema<IMovie>({
     },
     releaseDate:{
         type: String,
+    },
+    imageUrl:{
+        type: String,
+        required:true,
     }
 },
 {

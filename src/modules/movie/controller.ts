@@ -5,19 +5,24 @@ import MovieService from "./service";
 import { Request, Response } from "express";
 
 const movieService = new MovieService();
+
 const controllers = {
   create: async (req: Request, res: Response) => {
     const dto = req.body as ICreateMovie;
+    const file = req.file; 
+    const imageUrl = file ? `/uploads/${file.filename}` : undefined;
+
     try {
-      const result = await movieService.create({ dto });
+      const result = await movieService.create({ dto, imageUrl });
       const response = new MovieEntity(result).serialize();
-      res.status(statusCodes.PROCESSED || 201).json(response); // Use 201 if PROCESSED is invalid
+      res.status(statusCodes.PROCESSED || 201).json(response);
     } catch (error) {
       res
         .status(statusCodes.SERVICE_UNAVAILABLE || 500)
         .json({ error: error.message });
     }
   },
+
   getAll: async (req: Request, res: Response) => {
     try {
       const result = await movieService.getAll();

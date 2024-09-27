@@ -11,8 +11,6 @@ const validationSchemas = {
        genre: Joi.string().max(constants.DEFAULT_STRING_MAX_LEN).required(),
        releaseDate: Joi.string().required(),
     }),
-
-   
 }
 
 export default validationSchemas;

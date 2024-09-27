@@ -7,7 +7,8 @@ import cinemaHallRouter from "./modules/cinema hall/route";
 import userRouter from "./modules/user/route";
 import screeningRouter from "./modules/screening/route";
 import ticketRouter from "./modules/ticket/route";
-import cors from "cors";  // Import CORS
+import cors from "cors";  
+import path from "path";  
 
 const app: Application = express();
 
@@ -16,15 +17,17 @@ dotenv.config();
 app.use(cors({
   origin: ['http://localhost:3000', 'https://main--booking-cinmea-damas.netlify.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,  
+  credentials: true,
 }));
 
 app.use(express.json());
+
 app.use(errorHandler);
+
+app.use('/uploads', express.static(path.join(__dirname, './uploads')));
 
 app.use("/api/user", userRouter);
 app.use("/api/movie", movieRouter);
-
 app.use("/api/cinemaHalls", cinemaHallRouter);
 app.use("/api/seat", seatRouter);
 app.use("/api/screening", screeningRouter);
