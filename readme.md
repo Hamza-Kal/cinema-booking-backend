@@ -18,10 +18,3 @@ Before running this project, make sure you have the following installed:
 - [MongoDB](https://www.mongodb.com/try/download/community)
 - [Git](https://git-scm.com/)
 
-## Project Setup
-
-1. **Clone the repository**:
-
-   ```bash
-   git clone https://gitlab.com/your-username/your-repository.git
-   cd your-repository
